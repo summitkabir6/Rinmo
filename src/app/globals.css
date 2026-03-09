@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Dark mode (default) ── */
+:root {
+  --accent: #00C2FF;
+  --accent-dim: #0099CC;
+  --accent-glow: rgba(0, 194, 255, 0.15);
+  --bg: #0C0C12;
+  --surface-1: #111119;
+  --surface-2: #16161F;
+  --surface-3: #1C1C28;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-accent: rgba(0, 194, 255, 0.25);
+  --text: #EEEEF5;
+  --text-muted: #7A7A96;
+  --text-dim: #42425A;
+  --node-color: #00C2FF;
+  --node-line: rgba(0, 194, 255, 0.18);
+  --nav-bg: rgba(12, 12, 18, 0.92);
+  --mockup-bg: #0E0E16;
+  --mockup-border: rgba(0, 194, 255, 0.22);
+  --tag-bg: rgba(255, 255, 255, 0.03);
+  --tag-border: rgba(255, 255, 255, 0.1);
+  --grid-line: rgba(255, 255, 255, 0.03);
+  --table-head: rgba(255,255,255,0.02);
+  --pain-card-hover: rgba(0,194,255,0.05);
+}
+
+/* ── Light mode ── */
+:root.light {
+  --accent: #C17A3A;
+  --accent-dim: #A36530;
+  --accent-glow: rgba(193, 122, 58, 0.12);
+  --bg: #F2EFE9;
+  --surface-1: #EAE7E0;
+  --surface-2: #E0DDD6;
+  --surface-3: #D5D2CB;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-accent: rgba(193, 122, 58, 0.3);
+  --text: #1A1A2E;
+  --text-muted: #5A5870;
+  --text-dim: #9A98B0;
+  --node-color: #C17A3A;
+  --node-line: rgba(193, 122, 58, 0.22);
+  --nav-bg: rgba(242, 239, 233, 0.92);
+  --mockup-bg: #E8E5DE;
+  --mockup-border: rgba(193, 122, 58, 0.3);
+  --tag-bg: rgba(0, 0, 0, 0.04);
+  --tag-border: rgba(0, 0, 0, 0.1);
+  --grid-line: rgba(0, 0, 0, 0.04);
+  --table-head: rgba(0,0,0,0.02);
+  --pain-card-hover: rgba(193,122,58,0.05);
+}
+
+/* ── Smooth theme transitions ── */
+body, header, section, footer, div, p, h1, h2, h3, h4, span, a, td, th, li, ul, nav, button {
+  transition:
+    background-color 0.45s ease,
+    border-color 0.45s ease,
+    color 0.45s ease,
+    box-shadow 0.45s ease,
+    fill 0.45s ease,
+    stroke 0.45s ease;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+::selection { background: var(--accent-glow); color: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+
+/* ── Typography ── */
+.hero-wordmark {
+  font-size: clamp(72px, 11vw, 128px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  color: var(--text);
+}
+
+.section-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.card-hover {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.card-hover:hover {
+  border-color: var(--border-accent);
+  background: var(--pain-card-hover);
+}
+
+/* ── Accent text ── */
+.text-accent { color: var(--accent); }
+
+/* ── Grid background ── */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* ── Step connector line ── */
+.step-line {
+  position: absolute;
+  top: 28px;
+  left: calc(50% + 48px);
+  right: calc(-50% + 48px);
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Comparison table ── */
+.table-rinmo-col {
+  background: var(--accent-glow);
+}
+
+/* ── Tag chips ── */
+.chip {
+  font-size: 11px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--tag-border);
+  color: var(--text-muted);
+  background: var(--tag-bg);
+  display: inline-block;
+}
