@@ -38,10 +38,11 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: '/favicon/favicon.svg',
+    shortcut: '/favicon/favicon.svg',
+    apple: '/favicon/favicon.svg',
   },
+  manifest: '/favicon/site.webmanifest',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
