@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { track } from '@/lib/analytics'
 import { useTheme } from '@/components/ThemeProvider'
@@ -33,12 +34,13 @@ export default function Nav() {
       <div className="max-w-site mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" aria-label="Rinmo home">
-          <span
-            className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold"
-            style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-dim))', color: '#000' }}
-          >
-            R
-          </span>
+          <Image
+            src={theme === 'light' ? '/logo-light.png' : '/logo-dark.png'}
+            alt="Rinmo"
+            width={28}
+            height={28}
+            className="rounded-lg"
+          />
           <span className="font-semibold text-sm tracking-tight" style={{ color: 'var(--text)' }}>rinmo</span>
           <span
             className="hidden sm:block text-xs ml-1 font-medium tracking-widest uppercase"

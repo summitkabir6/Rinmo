@@ -1,16 +1,23 @@
+'use client'
+
 import Link from 'next/link'
+import Image from 'next/image'
+import { useTheme } from '@/components/ThemeProvider'
 
 export default function Footer() {
+  const { theme } = useTheme()
+
   return (
     <footer style={{ borderTop: '1px solid var(--border)', background: 'var(--surface-1)' }}>
       <div className="max-w-site mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-2">
-          <span
-            className="w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold"
-            style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-dim))', color: '#000' }}
-          >
-            R
-          </span>
+          <Image
+            src={theme === 'light' ? '/logo-light.png' : '/logo-dark.png'}
+            alt="Rinmo"
+            width={24}
+            height={24}
+            className="rounded-md"
+          />
           <span className="text-sm font-medium" style={{ color: 'var(--text)' }}>rinmo.ai</span>
         </div>
 
