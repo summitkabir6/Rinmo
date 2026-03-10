@@ -4,7 +4,6 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import CTAButton from '@/components/CTAButton'
 import AnimatedNodeNetwork from '@/components/AnimatedNodeNetwork'
-import HeroLogo from '@/components/HeroLogo'
 
 export const metadata: Metadata = {
   title: 'Rinmo — AI Hiring Decision System',
@@ -183,7 +182,6 @@ export default function HomePage() {
             {/* Left copy */}
             <div>
               <div className="mb-5">
-                <HeroLogo />
                 <div className="hero-wordmark">Rinmo</div>
                 <p className="text-xs font-bold tracking-[0.16em] uppercase mt-2 ml-0.5" style={{ color: 'var(--accent)' }}>
                   AI Hiring Decision System
