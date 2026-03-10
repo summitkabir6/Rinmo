@@ -4,6 +4,8 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import CTAButton from '@/components/CTAButton'
 import AnimatedNodeNetwork from '@/components/AnimatedNodeNetwork'
+import DashboardMockupInteractive from '@/components/DashboardMockupInteractive'
+import ErrorBoundary from '@/components/ErrorBoundary'
 
 export const metadata: Metadata = {
   title: 'Rinmo — AI Hiring Decision System',
@@ -78,84 +80,6 @@ const FAQS = [
   { q: 'How long does onboarding take?', a: "Most teams are running their first live pipeline within 48 hours. Setup involves one 30-minute session to configure your role and rubric, and then you're live. There is no long implementation cycle." },
 ]
 
-function DashboardMockup() {
-  const candidates = [
-    { name: 'Jordan Lee', score: 94, badge: 'Top match', color: '#00C2FF' },
-    { name: 'Priya Sharma', score: 87, badge: 'Strong', color: '#4ADE80' },
-    { name: 'Marcus Webb', score: 71, badge: 'Review', color: '#FACC15' },
-  ]
-  return (
-    <div style={{ background: 'var(--mockup-bg)', border: '1px solid var(--mockup-border)', borderRadius: 16, overflow: 'hidden', boxShadow: '0 0 60px rgba(0,0,0,0.3), 0 24px 48px rgba(0,0,0,0.4)' }}>
-      {/* Title bar */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderBottom: '1px solid var(--border)', background: 'var(--surface-1)' }}>
-        <div style={{ display: 'flex', gap: 5 }}>
-          {['#ef4444', '#eab308', '#22c55e'].map((c) => (
-            <span key={c} style={{ width: 9, height: 9, borderRadius: '50%', background: c, opacity: 0.7, display: 'block' }} />
-          ))}
-        </div>
-        <span style={{ fontSize: 11, color: 'var(--text-dim)', fontFamily: 'monospace', marginLeft: 8 }}>rinmo · shortlist dashboard</span>
-      </div>
-
-      <div style={{ padding: 18 }}>
-        {/* Pipeline header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-          <div>
-            <p style={{ fontSize: 10, color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 2 }}>PIPELINE</p>
-            <p style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)' }}>Senior Engineer · Q1 2025</p>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '3px 10px', borderRadius: 999, background: 'var(--accent-glow)', border: '1px solid var(--border-accent)', fontSize: 11, color: 'var(--accent)', fontWeight: 500 }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)', display: 'block' }} />
-            24 screened
-          </div>
-        </div>
-
-        {/* Candidates */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 7, marginBottom: 14 }}>
-          {candidates.map((c, i) => (
-            <div key={c.name} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '9px 11px', borderRadius: 10, background: i === 0 ? 'var(--accent-glow)' : 'var(--surface-2)', border: `1px solid ${i === 0 ? 'var(--border-accent)' : 'var(--border)'}` }}>
-              <div style={{ width: 26, height: 26, borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, background: `${c.color}22`, color: c.color, flexShrink: 0 }}>{c.name[0]}</div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <p style={{ fontSize: 12, fontWeight: 500, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{c.name}</p>
-                <p style={{ fontSize: 10, color: 'var(--text-dim)' }}>Senior Engineer</p>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0 }}>
-                <span style={{ fontSize: 10, padding: '2px 7px', borderRadius: 999, fontWeight: 500, background: `${c.color}18`, color: c.color }}>{c.badge}</span>
-                <span style={{ fontSize: 15, fontWeight: 700, color: c.color }}>{c.score}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Score breakdown */}
-        <div style={{ borderRadius: 10, padding: '11px 12px', border: '1px solid var(--border)', background: 'var(--surface-2)' }}>
-          <p style={{ fontSize: 10, color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, marginBottom: 9 }}>Score breakdown · Jordan Lee</p>
-          {[
-            { label: 'Technical depth', score: 96 },
-            { label: 'Communication', score: 91 },
-            { label: 'Culture signals', score: 88 },
-            { label: 'Role alignment', score: 94 },
-          ].map((dim) => (
-            <div key={dim.label} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-              <span style={{ fontSize: 10, color: 'var(--text-muted)', width: 100, flexShrink: 0 }}>{dim.label}</span>
-              <div style={{ flex: 1, height: 3, borderRadius: 2, background: 'var(--border)' }}>
-                <div style={{ width: `${dim.score}%`, height: 3, borderRadius: 2, background: 'linear-gradient(90deg, var(--accent-dim), var(--accent))' }} />
-              </div>
-              <span style={{ fontSize: 10, fontWeight: 600, color: 'var(--accent)', width: 22, textAlign: 'right' }}>{dim.score}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Tags */}
-        <div style={{ display: 'flex', gap: 7, marginTop: 11 }}>
-          {['SSO + SCIM', 'Audit Logs', 'ATS Sync'].map((tag) => (
-            <span key={tag} style={{ fontSize: 10, padding: '3px 9px', borderRadius: 999, border: '1px solid var(--border)', color: 'var(--text-dim)' }}>{tag}</span>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function CheckIcon() {
   return (
     <svg className="w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" fill="none" style={{ color: 'var(--accent)' }}>
@@ -213,9 +137,31 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right: mockup */}
-            <div className="hidden lg:block">
-              <DashboardMockup />
+            {/* Right: mockup — hover for Interact + depth, wrapped in error boundary */}
+            <div className="flex items-center justify-center lg:justify-end min-h-[320px]">
+              <div className="w-full max-w-[420px] min-w-0">
+                <ErrorBoundary
+                  fallback={
+                    <div
+                      className="w-full min-h-[320px] rounded-2xl flex items-center justify-center text-center p-8"
+                      style={{
+                        background: 'var(--surface-2)',
+                        border: '1px solid var(--border)',
+                        color: 'var(--text-muted)',
+                      }}
+                    >
+                      <div>
+                        <p className="text-sm font-medium mb-1" style={{ color: 'var(--text)' }}>
+                          Dashboard preview
+                        </p>
+                        <p className="text-xs">Refresh the page to load the interactive mockup.</p>
+                      </div>
+                    </div>
+                  }
+                >
+                  <DashboardMockupInteractive />
+                </ErrorBoundary>
+              </div>
             </div>
           </div>
         </div>

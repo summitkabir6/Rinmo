@@ -21,18 +21,13 @@ export default function CTAButton({ href, source, children, fullWidth, className
       href={href}
       onClick={handleClick}
       className={[
-        'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200',
-        'hover:opacity-90 hover:shadow-lg active:scale-[0.98]',
+        'cta-button inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200',
+        'active:scale-[0.98]',
         fullWidth ? 'w-full' : '',
         className ?? '',
       ]
         .filter(Boolean)
         .join(' ')}
-      style={{
-        background: 'var(--accent)',
-        color: '#000',
-        boxShadow: '0 0 20px var(--accent-glow)',
-      }}
     >
       {children}
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

@@ -45,10 +45,13 @@ export const metadata: Metadata = {
   manifest: '/favicon/site.webmanifest',
 }
 
+const themeScript = `(function(){try{var t=localStorage.getItem('rinmo-theme');document.documentElement.classList.toggle('light',t!=='dark');}catch(e){}})();`
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <ThemeProvider>
           {children}
         </ThemeProvider>

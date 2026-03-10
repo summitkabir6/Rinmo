@@ -5,16 +5,16 @@ import { createContext, useContext, useEffect, useState } from 'react'
 type Theme = 'dark' | 'light'
 
 const ThemeContext = createContext<{ theme: Theme; toggle: () => void }>({
-  theme: 'dark',
+  theme: 'light',
   toggle: () => {},
 })
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark')
+  const [theme, setTheme] = useState<Theme>('light')
 
   useEffect(() => {
     const saved = localStorage.getItem('rinmo-theme') as Theme | null
-    if (saved) {
+    if (saved === 'light' || saved === 'dark') {
       setTheme(saved)
       document.documentElement.classList.toggle('light', saved === 'light')
     }

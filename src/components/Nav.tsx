@@ -25,13 +25,15 @@ export default function Nav() {
     <header
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: scrolled ? 'var(--nav-bg)' : 'transparent',
+        background: scrolled ? 'var(--nav-bg)' : 'var(--surface-1)',
+        borderBottom: '1px solid var(--border)',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
-        transition: 'background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+        transition: 'background 0.3s ease, backdrop-filter 0.3s ease',
       }}
     >
-      <div className="max-w-site mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-site mx-auto">
+        <div className="h-16 flex flex-nowrap items-center justify-between gap-4 px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" aria-label="Rinmo home">
           <Image
@@ -97,8 +99,7 @@ export default function Nav() {
           <Link
             href="/apply"
             onClick={handleCTAClick}
-            className="px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:opacity-90"
-            style={{ background: 'var(--accent)', color: '#000' }}
+            className="cta-button px-4 py-2 rounded-lg text-sm font-semibold transition-all"
           >
             Get early access
           </Link>
@@ -138,19 +139,20 @@ export default function Nav() {
             </svg>
           </button>
         </div>
-      </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden border-t px-6 py-4 flex flex-col gap-4" style={{ background: 'var(--nav-bg)', borderColor: 'var(--border)', backdropFilter: 'blur(16px)' }}>
-          {['How it works', 'Features', 'FAQ'].map((l) => (
-            <a key={l} href={`#${l.toLowerCase().replace(/ /g, '-')}`} onClick={() => setMobileOpen(false)} className="text-sm py-1" style={{ color: 'var(--text-muted)' }}>{l}</a>
-          ))}
-          <Link href="/apply" onClick={handleCTAClick} className="px-4 py-2.5 rounded-lg text-sm font-semibold text-center" style={{ background: 'var(--accent)', color: '#000' }}>
-            Get early access
-          </Link>
         </div>
-      )}
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <div className="md:hidden border-t px-6 py-4 flex flex-col gap-4" style={{ borderColor: 'var(--border)' }}>
+            {['How it works', 'Features', 'FAQ'].map((l) => (
+              <a key={l} href={`#${l.toLowerCase().replace(/ /g, '-')}`} onClick={() => setMobileOpen(false)} className="text-sm py-1" style={{ color: 'var(--text-muted)' }}>{l}</a>
+            ))}
+            <Link href="/apply" onClick={handleCTAClick} className="cta-button px-4 py-2.5 rounded-lg text-sm font-semibold text-center">
+              Get early access
+            </Link>
+          </div>
+        )}
+      </div>
     </header>
   )
 }

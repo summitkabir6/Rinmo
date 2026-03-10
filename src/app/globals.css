@@ -19,13 +19,19 @@
   --node-color: #00C2FF;
   --node-line: rgba(0, 194, 255, 0.18);
   --nav-bg: rgba(12, 12, 18, 0.92);
-  --mockup-bg: #0E0E16;
+  --mockup-bg: #0A0A10;
   --mockup-border: rgba(0, 194, 255, 0.22);
   --tag-bg: rgba(255, 255, 255, 0.03);
   --tag-border: rgba(255, 255, 255, 0.1);
-  --grid-line: rgba(255, 255, 255, 0.03);
+  --grid-line: rgba(255, 255, 255, 0.07);
   --table-head: rgba(255,255,255,0.02);
   --pain-card-hover: rgba(0,194,255,0.05);
+  --badge-top: #00C2FF;
+  --badge-top-bg: rgba(0, 194, 255, 0.2);
+  --badge-strong: #34D399;
+  --badge-strong-bg: rgba(52, 211, 153, 0.2);
+  --badge-review: #FBBF24;
+  --badge-review-bg: rgba(251, 191, 36, 0.2);
 }
 
 /* ── Light mode ── */
@@ -45,13 +51,19 @@
   --node-color: #C17A3A;
   --node-line: rgba(193, 122, 58, 0.22);
   --nav-bg: rgba(242, 239, 233, 0.92);
-  --mockup-bg: #E8E5DE;
+  --mockup-bg: #D2CFC6;
   --mockup-border: rgba(193, 122, 58, 0.3);
   --tag-bg: rgba(0, 0, 0, 0.04);
   --tag-border: rgba(0, 0, 0, 0.1);
-  --grid-line: rgba(0, 0, 0, 0.04);
+  --grid-line: rgba(0, 0, 0, 0.09);
   --table-head: rgba(0,0,0,0.02);
   --pain-card-hover: rgba(193,122,58,0.05);
+  --badge-top: #0284C7;
+  --badge-top-bg: rgba(2, 132, 199, 0.15);
+  --badge-strong: #15803D;
+  --badge-strong-bg: rgba(21, 128, 61, 0.15);
+  --badge-review: #B45309;
+  --badge-review-bg: rgba(180, 83, 9, 0.15);
 }
 
 /* ── Smooth theme transitions ── */
@@ -151,6 +163,18 @@ body {
 /* ── Comparison table ── */
 .table-rinmo-col {
   background: var(--accent-glow);
+}
+
+/* ── CTA button ── */
+.cta-button {
+  background: var(--accent);
+  color: #000;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+.cta-button:hover {
+  background: #000;
+  color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 /* ── Tag chips ── */

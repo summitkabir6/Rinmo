@@ -13,8 +13,7 @@ interface Node {
   pulsePhase: number
 }
 
-const NODE_COUNT = 22
-const MAX_DIST = 160
+const NODE_COUNT = 45
 
 function randomBetween(a: number, b: number) {
   return a + Math.random() * (b - a)
@@ -87,7 +86,8 @@ export default function AnimatedNodeNetwork() {
         if (n.y > 98) { n.y = 98; n.vy *= -1 }
       })
 
-      // Draw lines between nearby nodes
+      // Draw lines between ALL nodes (hive mind — every node connected to every other)
+      const maxCanvasDist = Math.hypot(W, H)
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const ax = (nodes[i].x / 100) * W
@@ -95,16 +95,13 @@ export default function AnimatedNodeNetwork() {
           const bx = (nodes[j].x / 100) * W
           const by = (nodes[j].y / 100) * H
           const dist = Math.hypot(ax - bx, ay - by)
-
-          if (dist < MAX_DIST) {
-            const alpha = (1 - dist / MAX_DIST) * 0.22
-            ctx.beginPath()
-            ctx.moveTo(ax, ay)
-            ctx.lineTo(bx, by)
-            ctx.strokeStyle = lineColor + alpha + ')'
-            ctx.lineWidth = 0.8
-            ctx.stroke()
-          }
+          const alpha = Math.max(0, 0.2 * (1 - dist / maxCanvasDist))
+          ctx.beginPath()
+          ctx.moveTo(ax, ay)
+          ctx.lineTo(bx, by)
+          ctx.strokeStyle = lineColor + alpha + ')'
+          ctx.lineWidth = 0.8
+          ctx.stroke()
         }
       }
 
