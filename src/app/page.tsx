@@ -6,6 +6,7 @@ import CTAButton from '@/components/CTAButton'
 import AnimatedNodeNetwork from '@/components/AnimatedNodeNetwork'
 import DashboardMockupInteractive from '@/components/DashboardMockupInteractive'
 import ErrorBoundary from '@/components/ErrorBoundary'
+import HowRinmoWorks from '@/components/HowRinmoWorks'
 
 export const metadata: Metadata = {
   title: 'Rinmo — AI Hiring Decision System',
@@ -16,31 +17,6 @@ export const metadata: Metadata = {
     description: 'Screen candidates faster. Decide with confidence. Audit everything.',
   },
 }
-
-const PAIN_POINTS = [
-  { icon: '⏱', title: '23 hours', sub: 'average time spent per hire on screening alone' },
-  { icon: '🎲', title: 'No structure', sub: 'every interviewer evaluates differently with no shared rubric' },
-  { icon: '⚖️', title: 'Bias risk', sub: 'gut-feel decisions that are impossible to justify or audit' },
-  { icon: '📁', title: 'No audit trail', sub: 'if a candidate challenges a decision, you have nothing to show' },
-]
-
-const STEPS = [
-  {
-    num: '01', title: 'Intake',
-    desc: "Define the role and set your rubric. Tell Rinmo what you're hiring for: the skills, signals, and dealbreakers. Takes 10 minutes.",
-    detail: 'Role definition · Scoring dimensions · Knockout filters',
-  },
-  {
-    num: '02', title: 'Screen',
-    desc: 'Rinmo contacts candidates via structured questions (written, voice, or video). Every candidate gets the same experience — no scheduling chaos.',
-    detail: 'Async voice/video · Structured prompts · Auto transcription',
-  },
-  {
-    num: '03', title: 'Rank',
-    desc: 'Get a scored shortlist with reasoning for each candidate. Every decision is logged. Move to interviews with confidence.',
-    detail: 'Scored shortlist · Per-dimension reasoning · Full audit export',
-  },
-]
 
 const FEATURES = [
   { icon: '🔍', title: 'AI screening that reads the signals', desc: 'Not keyword matching. Rinmo evaluates answers against your rubric and flags what matters: communication, relevance, red flags.' },
@@ -167,63 +143,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── THE PROBLEM ── */}
-      <section className="py-24 px-6" style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="max-w-site mx-auto">
-          <span className="section-eyebrow">The problem</span>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)', letterSpacing: '-0.02em' }}>
-                Hiring is broken for teams that care about quality.
-              </h2>
-              <p style={{ color: 'var(--text-muted)', maxWidth: 420, lineHeight: 1.75 }}>
-                Not broken like &ldquo;it&rsquo;s inconvenient.&rdquo; Broken like &ldquo;you&rsquo;re making six-figure decisions on vibes and hoping it works out.&rdquo;
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {PAIN_POINTS.map((p) => (
-                <div key={p.title} className="card-hover p-5">
-                  <div className="text-2xl mb-3">{p.icon}</div>
-                  <div className="text-base font-bold mb-1" style={{ color: 'var(--text)' }}>{p.title}</div>
-                  <p className="text-sm" style={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>{p.sub}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── HOW IT WORKS ── */}
-      <section id="how-it-works" className="py-24 px-6" style={{ background: 'var(--surface-1)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
-        <div className="max-w-site mx-auto">
-          <span className="section-eyebrow">How Rinmo works</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)', letterSpacing: '-0.02em' }}>
-            Three steps. One shortlist.
-          </h2>
-          <p className="mb-14" style={{ color: 'var(--text-muted)', maxWidth: 440 }}>
-            Designed for hiring teams who want rigor without the overhead.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {STEPS.map((step, i) => (
-              <div key={step.num} className="relative p-7 rounded-2xl" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
-                {/* Connector line between steps */}
-                {i < STEPS.length - 1 && (
-                  <div className="hidden md:block absolute top-10 left-full w-6 h-px z-10" style={{ background: 'var(--accent)', opacity: 0.3 }} />
-                )}
-                <div className="text-5xl font-black mb-5 leading-none" style={{ color: 'var(--border)', WebkitTextStroke: '1px var(--border)' }}>
-                  {step.num}
-                </div>
-                <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text)' }}>{step.title}</h3>
-                <p className="text-sm mb-5 leading-relaxed" style={{ color: 'var(--text-muted)' }}>{step.desc}</p>
-                <div className="text-xs font-mono pt-4" style={{ color: 'var(--accent)', borderTop: '1px solid var(--border)' }}>
-                  {step.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HowRinmoWorks />
 
       {/* ── EARLY ACCESS ── */}
       <section className="py-24 px-6" style={{ borderBottom: '1px solid var(--border)' }}>

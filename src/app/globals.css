@@ -177,6 +177,23 @@ body {
   box-shadow: 0 0 20px var(--accent-glow);
 }
 
+/* ── How Rinmo Works steps ── */
+.how-it-works-step:hover {
+  border-color: var(--border-accent) !important;
+  background: var(--accent-glow) !important;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
 /* ── Tag chips ── */
 .chip {
   font-size: 11px;
