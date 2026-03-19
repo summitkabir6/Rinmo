@@ -7,6 +7,7 @@ import AnimatedNodeNetwork from '@/components/AnimatedNodeNetwork'
 import DashboardMockupInteractive from '@/components/DashboardMockupInteractive'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import HowRinmoWorks from '@/components/HowRinmoWorks'
+import FAQDropdown from '@/components/FAQDropdown'
 
 export const metadata: Metadata = {
   title: 'Rinmo — AI Hiring Decision System',
@@ -17,15 +18,6 @@ export const metadata: Metadata = {
     description: 'Screen candidates faster. Decide with confidence. Audit everything.',
   },
 }
-
-const FEATURES = [
-  { icon: '🔍', title: 'AI screening that reads the signals', desc: 'Not keyword matching. Rinmo evaluates answers against your rubric and flags what matters: communication, relevance, red flags.' },
-  { icon: '📋', title: 'Structured scorecards', desc: 'Every candidate scored on the same dimensions. Customize templates per role. No more "I just got a good feeling about them."' },
-  { icon: '🏆', title: 'Ranked shortlist with reasoning', desc: 'See who scored highest and exactly why. Compare candidates side by side. Defend your shortlist in 30 seconds.' },
-  { icon: '🔐', title: 'Audit logs built in', desc: 'Every screening event, score, and decision is logged with timestamps. Export for compliance reviews or legal challenges.' },
-  { icon: '🔗', title: 'ATS & calendar integrations', desc: 'Works alongside your existing ATS. Connects to Google Calendar, Outlook, and Slack. (Integrations in progress — launching with early access.)' },
-  { icon: '⚡', title: 'Fast setup, real results', desc: 'Go from role definition to first shortlist in under 48 hours. No 6-month enterprise implementation, no dedicated IT.' },
-]
 
 const EARLY_ACCESS_DELIVERABLES = [
   'Dedicated onboarding session (role setup + rubric calibration)',
@@ -48,12 +40,30 @@ const COMPARISON = [
 ]
 
 const FAQS = [
-  { q: 'What does early access actually include?', a: "Early access is a hands-on pilot, not a waitlist. You get a dedicated onboarding session, custom scorecard templates, a live pipeline run with your real candidates, full shortlist dashboard access, and direct access to our founding team. We're treating each pilot team as a design partner." },
-  { q: 'Does Rinmo replace our ATS?', a: "No. Rinmo sits on top of your existing ATS as a screening and decision layer. We're not trying to rebuild Greenhouse or Lever. We do the part they can't: structured, explainable, AI-powered candidate evaluation." },
-  { q: 'Can we customize the rubric and scoring dimensions?', a: 'Yes, that\'s the whole point. Every role and company is different. You define what good looks like for each role, and Rinmo scores against your criteria — not generic "culture fit" nonsense.' },
-  { q: 'How does Rinmo reduce bias in hiring?', a: "Bias comes from inconsistency. When every candidate answers different questions, evaluated by different people with no shared standard, you're flying blind. Rinmo enforces identical structured questions for every candidate and scores against explicit dimensions — making the process auditable and consistent by design." },
-  { q: 'What candidate data does Rinmo store?', a: 'We store responses to structured questions (text/audio/video depending on configuration), AI-generated scores and reasoning, and event logs. We do not build candidate profiles across companies. You own your data, and candidates are informed before participating.' },
-  { q: 'How long does onboarding take?', a: "Most teams are running their first live pipeline within 48 hours. Setup involves one 30-minute session to configure your role and rubric, and then you're live. There is no long implementation cycle." },
+  {
+    q: 'How does Rinmo fit into an existing hiring stack?',
+    a: "Rinmo sits on top of your ATS. It doesn't replace Greenhouse or Lever. It handles the part they don't: structured evaluation, scoring with reasoning, and decision logs. You keep your pipeline in your ATS; Rinmo runs the screening and evaluation layer.",
+  },
+  {
+    q: 'What information about candidates does Rinmo keep?',
+    a: 'Responses to structured questions (text, voice, or video depending on setup), the scores and reasoning we generate, and event logs. We do not build cross-company profiles. You own the data. Candidates are informed before they participate.',
+  },
+  {
+    q: 'Can we define our own rubric and scoring dimensions?',
+    a: "Yes. You set the dimensions and what good looks like. Rinmo scores against your criteria. We're not applying a generic template — you define the rubric per role.",
+  },
+  {
+    q: 'How does Rinmo make hiring decisions more consistent?',
+    a: 'Every candidate gets the same questions. Every response is scored against the same rubric. No ad-hoc interviews, no "I just got a good feeling." The output is a scored shortlist with reasoning per dimension. You can defend the decision because the logic is explicit and logged.',
+  },
+  {
+    q: 'What does early access include?',
+    a: 'A live pilot with your real candidates. Onboarding to configure your role and rubric. Access to the shortlist dashboard and audit logs. Direct contact with the team. It\'s a pilot, not a waitlist.',
+  },
+  {
+    q: 'How long until we can run a live pipeline?',
+    a: 'Most teams are live within 48 hours. One session to set up the role and rubric, then you run candidates through.',
+  },
 ]
 
 function CheckIcon() {
@@ -182,43 +192,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FEATURES ── */}
-      <section id="features" className="py-24 px-6" style={{ background: 'var(--surface-1)', borderBottom: '1px solid var(--border)' }}>
-        <div className="max-w-site mx-auto">
-          <span className="section-eyebrow">Features</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: 'var(--text)', letterSpacing: '-0.02em' }}>
-            Everything you need to hire without guessing.
-          </h2>
-          <p className="mb-14" style={{ color: 'var(--text-muted)', maxWidth: 440 }}>
-            No keyword matching. No gut-feel scorecards. No black-box decisions.
-          </p>
-
-          {/* Asymmetric feature layout */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-            {/* Large feature — spans 7 cols */}
-            <div className="md:col-span-7 p-7 rounded-2xl" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
-              <div className="text-3xl mb-4">{FEATURES[0].icon}</div>
-              <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--text)' }}>{FEATURES[0].title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{FEATURES[0].desc}</p>
-            </div>
-            {/* Small feature — spans 5 cols */}
-            <div className="md:col-span-5 p-6 rounded-2xl" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
-              <div className="text-3xl mb-4">{FEATURES[1].icon}</div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text)' }}>{FEATURES[1].title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{FEATURES[1].desc}</p>
-            </div>
-            {/* Three equal cards */}
-            {FEATURES.slice(2).map((f) => (
-              <div key={f.title} className="md:col-span-4 p-6 rounded-2xl card-hover">
-                <div className="text-2xl mb-3">{f.icon}</div>
-                <h3 className="font-semibold mb-2" style={{ color: 'var(--text)' }}>{f.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── COMPARISON ── */}
       <section className="py-24 px-6" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="max-w-site mx-auto">
@@ -252,54 +225,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SOCIAL PROOF ── */}
-      <section className="py-24 px-6" style={{ background: 'var(--surface-1)', borderBottom: '1px solid var(--border)' }}>
-        <div className="max-w-site mx-auto">
-          <span className="section-eyebrow">Pilot teams</span>
-          <h2 className="text-2xl md:text-3xl font-bold mb-10" style={{ color: 'var(--text)', letterSpacing: '-0.02em' }}>
-            Built with early-stage hiring teams.
-          </h2>
-
-          <div className="flex flex-wrap gap-3 mb-14">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-10 w-32 rounded-lg border flex items-center justify-center text-xs" style={{ borderColor: 'var(--border)', background: 'var(--surface-2)', color: 'var(--text-dim)' }}>
-                Logo {i} (placeholder)
-              </div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { quote: 'We were spending 3 hours per candidate on screening calls. Rinmo got us to a scored shortlist before I finished my coffee on Monday morning.', name: 'Head of Talent — [Placeholder]' },
-              { quote: 'For the first time, I can actually defend our shortlist to the CEO with data. Not a hunch. Not vibes. A structured score with reasoning.', name: 'Hiring Manager — [Placeholder]' },
-            ].map((t) => (
-              <div key={t.name} className="p-7 rounded-2xl" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
-                <div className="text-3xl mb-4" style={{ color: 'var(--accent)', opacity: 0.5, lineHeight: 1 }}>&ldquo;</div>
-                <p className="text-base leading-relaxed mb-5" style={{ color: 'var(--text-muted)' }}>{t.quote}</p>
-                <p className="text-xs font-semibold" style={{ color: 'var(--text-dim)' }}>{t.name}</p>
-                <p className="text-xs mt-1" style={{ color: 'var(--text-dim)', opacity: 0.5 }}>— Placeholder, will be replaced with verified pilot customers</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── FAQ ── */}
       <section id="faq" className="py-24 px-6" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="max-w-site mx-auto">
           <span className="section-eyebrow">FAQ</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-14" style={{ color: 'var(--text)', letterSpacing: '-0.02em' }}>
-            Honest answers.
+          <h2 className="text-3xl md:text-4xl font-bold mb-16" style={{ color: 'var(--text)', letterSpacing: '-0.02em' }}>
+            Questions we get.
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
-            {FAQS.map((faq) => (
-              <div key={faq.q} className="border-t pt-6" style={{ borderColor: 'var(--border)' }}>
-                <h3 className="font-semibold mb-3" style={{ color: 'var(--text)' }}>{faq.q}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{faq.a}</p>
-              </div>
-            ))}
-          </div>
+          <FAQDropdown items={FAQS} />
         </div>
       </section>
 
@@ -308,7 +242,7 @@ export default function HomePage() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 60%, var(--accent-glow) 0%, transparent 65%)' }} aria-hidden="true" />
         <div className="max-w-site mx-auto text-center relative">
           <h2 className="text-4xl md:text-5xl font-bold mb-5" style={{ color: 'var(--text)', letterSpacing: '-0.03em' }}>
-            Ready to hire with rigor?
+            Ready to hire with Rinmo?
           </h2>
           <p className="mb-8 max-w-md mx-auto" style={{ color: 'var(--text-muted)' }}>
             We&rsquo;re accepting a limited number of pilot teams. Applications are reviewed within 24 hours.

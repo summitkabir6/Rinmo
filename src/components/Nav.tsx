@@ -54,7 +54,7 @@ export default function Nav() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {['How it works', 'Features', 'FAQ'].map((l) => (
+          {['How it works', 'FAQ'].map((l) => (
             <a
               key={l}
               href={`#${l.toLowerCase().replace(/ /g, '-')}`}
@@ -144,7 +144,7 @@ export default function Nav() {
         {/* Mobile menu */}
         {mobileOpen && (
           <div className="md:hidden border-t px-6 py-4 flex flex-col gap-4" style={{ borderColor: 'var(--border)' }}>
-            {['How it works', 'Features', 'FAQ'].map((l) => (
+            {['How it works', 'FAQ'].map((l) => (
               <a key={l} href={`#${l.toLowerCase().replace(/ /g, '-')}`} onClick={() => setMobileOpen(false)} className="text-sm py-1" style={{ color: 'var(--text-muted)' }}>{l}</a>
             ))}
             <Link href="/apply" onClick={handleCTAClick} className="cta-button px-4 py-2.5 rounded-lg text-sm font-semibold text-center">
