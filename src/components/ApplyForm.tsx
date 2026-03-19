@@ -168,14 +168,16 @@ export default function ApplyForm() {
 
   const inputClass = (hasError: boolean) =>
     [
-      'w-full px-4 py-2.5 rounded-lg text-sm bg-transparent border transition-colors outline-none',
-      'placeholder-[var(--text-dim)] text-white',
+      'w-full px-4 py-2.5 rounded-lg text-sm border transition-colors outline-none',
+      'placeholder-[var(--text-dim)]',
       hasError
         ? 'border-red-500 focus:border-red-400'
         : 'border-[var(--border)] focus:border-[var(--accent)]',
     ].join(' ')
+  const inputStyle = { background: 'var(--surface-1)', color: 'var(--text)' }
 
   const labelClass = 'block text-sm font-medium mb-1.5'
+  const labelStyle = { color: 'var(--text)' }
 
   return (
     <form
@@ -187,7 +189,7 @@ export default function ApplyForm() {
     >
       {/* Full name */}
       <div>
-        <label htmlFor="full_name" className={labelClass}>
+        <label htmlFor="full_name" className={labelClass} style={labelStyle}>
           Full name <span className="text-red-400">*</span>
         </label>
         <input
@@ -203,7 +205,7 @@ export default function ApplyForm() {
           className={inputClass(!!errors.full_name)}
           aria-describedby={errors.full_name ? 'full_name_error' : undefined}
           aria-invalid={!!errors.full_name}
-          style={{ background: 'var(--surface-1)' }}
+          style={inputStyle}
         />
         {errors.full_name && (
           <p id="full_name_error" className="mt-1 text-xs text-red-400" role="alert">
@@ -214,7 +216,7 @@ export default function ApplyForm() {
 
       {/* Work email */}
       <div>
-        <label htmlFor="work_email" className={labelClass}>
+        <label htmlFor="work_email" className={labelClass} style={labelStyle}>
           Work email <span className="text-red-400">*</span>
         </label>
         <input
@@ -230,7 +232,7 @@ export default function ApplyForm() {
           className={inputClass(!!errors.work_email)}
           aria-describedby={errors.work_email ? 'work_email_error' : undefined}
           aria-invalid={!!errors.work_email}
-          style={{ background: 'var(--surface-1)' }}
+          style={inputStyle}
         />
         {errors.work_email && (
           <p id="work_email_error" className="mt-1 text-xs text-red-400" role="alert">
@@ -241,7 +243,7 @@ export default function ApplyForm() {
 
       {/* Company name */}
       <div>
-        <label htmlFor="company_name" className={labelClass}>
+        <label htmlFor="company_name" className={labelClass} style={labelStyle}>
           Company name <span className="text-red-400">*</span>
         </label>
         <input
@@ -257,7 +259,7 @@ export default function ApplyForm() {
           className={inputClass(!!errors.company_name)}
           aria-describedby={errors.company_name ? 'company_name_error' : undefined}
           aria-invalid={!!errors.company_name}
-          style={{ background: 'var(--surface-1)' }}
+          style={inputStyle}
         />
         {errors.company_name && (
           <p id="company_name_error" className="mt-1 text-xs text-red-400" role="alert">
@@ -268,7 +270,7 @@ export default function ApplyForm() {
 
       {/* Role */}
       <div>
-        <label htmlFor="role" className={labelClass}>
+        <label htmlFor="role" className={labelClass} style={labelStyle}>
           Your role <span className="text-red-400">*</span>
         </label>
         <div className="relative">
@@ -281,11 +283,11 @@ export default function ApplyForm() {
             }}
             className={inputClass(!!errors.role) + ' appearance-none pr-10 cursor-pointer'}
             aria-invalid={!!errors.role}
-            style={{ background: 'var(--surface-1)' }}
+            style={inputStyle}
           >
             <option value="" disabled>Select your role</option>
             {ROLES.map((r) => (
-              <option key={r} value={r} style={{ background: 'var(--surface-2)' }}>
+              <option key={r} value={r} style={{ background: 'var(--surface-2)', color: 'var(--text)' }}>
                 {r}
               </option>
             ))}
@@ -306,7 +308,7 @@ export default function ApplyForm() {
       {/* Company size + hires per year */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="company_size" className={labelClass}>
+          <label htmlFor="company_size" className={labelClass} style={labelStyle}>
             Company size <span className="text-red-400">*</span>
           </label>
           <div className="relative">
@@ -319,11 +321,11 @@ export default function ApplyForm() {
               }}
               className={inputClass(!!errors.company_size) + ' appearance-none pr-10 cursor-pointer'}
               aria-invalid={!!errors.company_size}
-              style={{ background: 'var(--surface-1)' }}
+              style={inputStyle}
             >
               <option value="" disabled>Employees</option>
               {COMPANY_SIZES.map((s) => (
-                <option key={s} value={s} style={{ background: 'var(--surface-2)' }}>
+                <option key={s} value={s} style={{ background: 'var(--surface-2)', color: 'var(--text)' }}>
                   {s} employees
                 </option>
               ))}
@@ -342,7 +344,7 @@ export default function ApplyForm() {
         </div>
 
         <div>
-          <label htmlFor="hires_per_year" className={labelClass}>
+          <label htmlFor="hires_per_year" className={labelClass} style={labelStyle}>
             Hires per year <span className="text-red-400">*</span>
           </label>
           <div className="relative">
@@ -355,11 +357,11 @@ export default function ApplyForm() {
               }}
               className={inputClass(!!errors.hires_per_year) + ' appearance-none pr-10 cursor-pointer'}
               aria-invalid={!!errors.hires_per_year}
-              style={{ background: 'var(--surface-1)' }}
+              style={inputStyle}
             >
               <option value="" disabled>Hires / year</option>
               {HIRES_PER_YEAR.map((h) => (
-                <option key={h} value={h} style={{ background: 'var(--surface-2)' }}>
+                <option key={h} value={h} style={{ background: 'var(--surface-2)', color: 'var(--text)' }}>
                   {h} hires/year
                 </option>
               ))}
@@ -380,7 +382,7 @@ export default function ApplyForm() {
 
       {/* Primary pain */}
       <fieldset>
-        <legend className={labelClass}>
+        <legend className={labelClass} style={labelStyle}>
           Primary pain points <span className="text-red-400">*</span>
           <span className="text-[var(--text-dim)] font-normal ml-1">(select all that apply)</span>
         </legend>
@@ -423,7 +425,7 @@ export default function ApplyForm() {
                     </svg>
                   )}
                 </span>
-                <span className="text-sm leading-snug">{option.label}</span>
+                <span className="text-sm leading-snug" style={{ color: 'var(--text)' }}>{option.label}</span>
               </label>
             )
           })}
@@ -435,7 +437,7 @@ export default function ApplyForm() {
 
       {/* Current tools */}
       <div>
-        <label htmlFor="current_tools" className={labelClass}>
+        <label htmlFor="current_tools" className={labelClass} style={labelStyle}>
           Current tools
           <span className="text-[var(--text-dim)] font-normal ml-1">(optional)</span>
         </label>
@@ -446,13 +448,13 @@ export default function ApplyForm() {
           value={form.current_tools}
           onChange={(e) => setForm((p) => ({ ...p, current_tools: e.target.value }))}
           className={inputClass(false)}
-          style={{ background: 'var(--surface-1)' }}
+          style={inputStyle}
         />
       </div>
 
       {/* Notes */}
       <div>
-        <label htmlFor="notes" className={labelClass}>
+        <label htmlFor="notes" className={labelClass} style={labelStyle}>
           Anything else we should know
           <span className="text-[var(--text-dim)] font-normal ml-1">(optional)</span>
         </label>
@@ -463,7 +465,7 @@ export default function ApplyForm() {
           value={form.notes}
           onChange={(e) => setForm((p) => ({ ...p, notes: e.target.value }))}
           className={inputClass(false) + ' resize-y min-h-[80px]'}
-          style={{ background: 'var(--surface-1)' }}
+          style={inputStyle}
         />
       </div>
 
@@ -502,8 +504,8 @@ export default function ApplyForm() {
           )}
         </span>
         <div>
-          <p className="text-sm font-medium">I want to book an onboarding call this month</p>
-          <p className="text-xs text-[var(--text-muted)] mt-0.5">
+          <p className="text-sm font-medium" style={{ color: 'var(--text)' }}>I want to book an onboarding call this month</p>
+          <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>
             We&apos;ll send a Calendly link to get on our calendar. 15 minutes, no pressure.
           </p>
         </div>
@@ -584,7 +586,7 @@ export default function ApplyForm() {
 
       <p className="text-xs text-center text-[var(--text-dim)]">
         By submitting, you agree to our{' '}
-        <a href="/privacy" className="underline hover:text-white transition-colors">
+        <a href="/privacy" className="underline transition-colors hover:opacity-80" style={{ color: 'var(--accent)' }}>
           privacy policy
         </a>
         . We don&apos;t spam. We don&apos;t sell data.

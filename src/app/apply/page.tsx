@@ -25,7 +25,7 @@ export default function ApplyPage() {
             >
               Early access application
             </p>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">Apply for early access</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>Apply for early access</h1>
             <p className="text-[var(--text-muted)] leading-relaxed">
               Rinmo&apos;s pilot is for hiring teams who want to screen faster and decide with
               confidence. We review every application personally and respond to qualified teams
