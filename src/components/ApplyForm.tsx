@@ -137,6 +137,8 @@ export default function ApplyForm() {
 
       if (result.success) {
         track('apply_submit_success', { role: form.role, company_size: form.company_size })
+        setForm(INITIAL_FORM)
+        setErrors({})
         const firstName = form.full_name.split(' ')[0]
         router.push(`/thanks?name=${encodeURIComponent(firstName)}`)
       } else {
